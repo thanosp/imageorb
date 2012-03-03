@@ -3,12 +3,11 @@
 require 'rubygems'
 require 'bundler/setup'
 
-Bundler.require(:default)
-
+require 'exifr'
+require 'geokit'
 require 'yaml'
 require 'net/http'
 require 'open-uri'
-
 
 def getFileGps(fileName)
     if fileName == nil
@@ -58,6 +57,7 @@ end
 
 ARGV.each do |imageFile|
     if (imageFile.match('http'))
+        puts 'Trying ' + imageFile
         imageFile = downloadImage(imageFile)
     end
 
